@@ -28,9 +28,11 @@ vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 vendor/lib64/libstagefrightdolby.so
 vendor/lib64/libdeccfg.so
 
-# Dolby (Sony-daxUI)
-system_ext/priv-app/daxService/daxService.apk
-system_ext/priv-app/DolbySound/DolbySound.apk
-system_ext/etc/sysconfig/config-com.dolby.daxservice.xml
-system_ext/etc/sysconfig/config-com.dolby.daxappui2.xml
-system_ext/etc/permissions/privapp-com.dolby.daxservice.xml
+# Dolby (DAXUI tuner) - OSS
+system_ext/etc/permissions/privapp-com.dolby.daxappui.xml|b783016728b17eadfcdad662ccaf546afbeab856
+system_ext/etc/permissions/privapp-com.dolby.daxservice.xml|a68f213faf58acc9270252aa48feeaa886578864
+system_ext/etc/sysconfig/config-com.dolby.daxappui.xml|43c610f41061f49959ce07b26c60427b8767e535
+system_ext/etc/sysconfig/config-com.dolby.daxservice.xml|7690774632fe32269657fc1a2a0c941c7cd83f3d
+system_ext/etc/sysconfig/hiddenapi-com.dolby.daxservice.xml|f647356bd3a4bb4174e873e4544c2921d51fd4d2
+-system_ext/priv-app/DaxUI/DaxUI.apk|866522b4820f8d19aebd87892e32fd068f9bac56
+-system_ext/priv-app/daxService/daxService.apk|68b181dad8a25da752f71c77610772b695303ca0
