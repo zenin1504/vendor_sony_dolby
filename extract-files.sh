@@ -55,6 +55,17 @@ fi
 
 function blob_fixup() {
     case "${1}" in
+        vendor/lib64/libdlbdsservice.so)
+            ;&
+        vendor/lib64/libcodec2_soft_ddpdec.so)
+            ;&
+        vendor/lib64/soundfx/libswdap.so)
+            ;&
+        vendor/lib64/soundfx/libdlbvol.so)
+            ;&
+        vendor/lib64/libcodec2_soft_ac4dec.so)
+            "${PATCHELF}" --add-needed "libstagefright_foundation-v33.so" "${2}"
+            ;;
     esac
 }
 
