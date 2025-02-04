@@ -64,6 +64,8 @@ function blob_fixup() {
         vendor/lib64/soundfx/libdlbvol.so)
             ;&
         vendor/lib64/libcodec2_soft_ac4dec.so)
+            ;&
+        vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service)
             "${PATCHELF}" --add-needed "libstagefright_foundation-v33.so" "${2}"
             ;;
     esac
