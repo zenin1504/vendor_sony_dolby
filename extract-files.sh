@@ -53,26 +53,25 @@ if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
 
+# Initialize the helper -- Adjust the 'false' if your LineageOS base requires it
+# for vendor sepolicy versioning etc.
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
+
 function blob_fixup() {
     case "${1}" in
-        vendor/lib64/libdlbdsservice.so)
-            ;&
-        vendor/lib64/libcodec2_soft_ddpdec.so)
-            ;&
-        vendor/lib64/soundfx/libswdap.so)
-            ;&
-        vendor/lib64/soundfx/libdlbvol.so)
-            ;&
-        vendor/lib64/libcodec2_soft_ac4dec.so)
-            ;&
+        vendor/lib64/libdlbdsservice.so | \
+        vendor/lib64/libcodec2_soft_ddpdec.so | \
+        vendor/lib64/soundfx/libswdap.so | \
+        vendor/lib64/soundfx/libdlbvol.so | \
+        vendor/lib64/libcodec2_soft_ac4dec.so | \
         vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service)
+            "${PATCHELF}" --remove-needed "libstagefright_foundation.so" "${2}" || true
             "${PATCHELF}" --add-needed "libstagefright_foundation-v33.so" "${2}"
+            ;;
+        *)
             ;;
     esac
 }
-
-# Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 
